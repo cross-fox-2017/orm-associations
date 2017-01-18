@@ -1,7 +1,7 @@
 {
   "name": "orm-associations",
   "version": "1.0.0",
-  "description": "Challenge for using Sequelize ORM for student schema",
+  "description": "",
   "main": "index.js",
   "author": "Syanmil",
   "license": "ISC",
