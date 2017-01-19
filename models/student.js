@@ -55,7 +55,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-
+        Students.hasMany(Student_teachers);
       },
       getAllData: function (cb) {
         Student.findAll().then(function (data) {
