@@ -22,7 +22,7 @@ const models = require('./models')
 //     })
 // })
 
-// models.Student.findById(21).then(function(dt) { // Menampilkan siswa tertentu
+// models.Student.findById(21).then(function(dt) { // Menampilkan guru dari siswa tertentu
 //         dt.getTeacher().then(function(getData){
 //           console.log(`Name: ${dt.name}, Teacher: ${getData.name}`);
 //         })
@@ -35,6 +35,25 @@ const models = require('./models')
 //       data.forEach(function(item){
 //         console.log(`${number}. ${item.name}`);
 //         number++
+//       })
+//     })
+// })
+
+// models.Teacher_Student.create({ //Create Data Teacher_Student
+//   TeacherId: 1,
+//   StudentId: 13
+// })
+
+
+// models.Student.findById(13).then(function(dt){ // Menampilkan Semua Guru dari Siswa Tertentu
+//     dt.getTeacher_Students().then(function(data){
+//       console.log("Daftar Guru dari Siswa: "+dt.name);
+//       let number =1;
+//       data.forEach(function(item){
+//         item.getTeacher().then(function(getItem){
+//             console.log(number+". Pak: "+getItem.name);
+//             number++
+//         })
 //       })
 //     })
 // })

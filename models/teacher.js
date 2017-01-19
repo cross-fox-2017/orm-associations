@@ -30,6 +30,8 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 // associations can be defined here
                 Teacher.hasMany(models.Student)
+                Teacher.hasMany(models.Teacher_Student)
+
             }
         }
     });
