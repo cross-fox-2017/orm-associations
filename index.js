@@ -33,14 +33,15 @@ const db = require('./models')
 //   console.log(student);
 // })
 
-db.Student.create({
-  name: 'Ida Bagus Chahya Dhegana',
-  birthdate: '1989-01-12',
-  email: 'dheganagmail.com',
-  phone: '081152asdas'
-}).then(function(student){
-  console.log(student);
-})
+// db.Student.create({
+//   name: 'Ida Bagus Chahya Dhegana',
+//   birthdate: '1989-01-12',
+//   email: 'dheganagmail.com',
+//   phone: '081152asdas'
+// }).then(function(student){
+//   console.log(student);
+// })
+
 
 
 /*
