@@ -39,11 +39,12 @@ module.exports = function(sequelize, DataTypes) {
 
         }
       },
-    TeacherId: DataTypes.INTEGER
+
   }, {
     classMethods: {
       associate: function(models) {
-        Student.belongsTo(models.Teacher)
+        Student.hasMany(models.StudentTeacher)
+        Student.belongsToMany(models.Teacher,{through:'StudentTeacher'})
       }
     }
   });

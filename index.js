@@ -5,3 +5,9 @@ const db = require('./models')
 //     s.setTeacher(x)
 //   })
 // })
+
+db.Teacher.findById(3).then(function(teach){
+  db.Student.findById(2).then(function(student){
+    student.addTeachers(teach)
+  })
+})
