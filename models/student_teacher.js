@@ -14,8 +14,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Student_teacher.BelongsTo(models.Student)
-        Student_teacher.BelongsTo(models.Teacher)
+        Student_teacher.belongsTo(models.Student)
+        Student_teacher.belongsTo(models.Teacher)
       }
     }
   });
