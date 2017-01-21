@@ -1,4 +1,6 @@
 'use strict';
+const Teacher = require('./teacher.js')
+
 module.exports = function(sequelize, DataTypes) {
   var Student = sequelize.define('Student', {
     firstName: DataTypes.STRING,
@@ -22,11 +24,13 @@ module.exports = function(sequelize, DataTypes) {
     height: {
       type: DataTypes.INTEGER,
       validate: {min: {args: 150, msg: "Minimal Height Must Above 150"}}
-    }
+    },
+    TeacherId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Student.hasMany(models.Teacher);
+        Student.belongsToMany(models.Teacher, {through: 'student_teacher', foreignKey: 'studentId' })
       },
       getAllData: function(){
         Student.findAll().then(function(data){
