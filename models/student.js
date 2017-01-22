@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Student = sequelize.define('Student', {
+  var Students = sequelize.define('Students', {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     birthdate: DataTypes.DATE,
@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
           msg: "Email format incorrect"
         },
         isUniqued: function (value, next) {
-          Student.findAll({
+          Students.findAll({
             where: {
               email: value
             }
@@ -55,10 +55,13 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Students.hasMany(Student_teachers);
+        Students.hasMany(models.Student_teachers); // menghasilkan studentId ke dalam Student_teachers
+        Students.belongsToMany(models.Teachers, {through: "Student_teachers"})
+        // create Student_teachers with FK studentId
+        // This will add methods getTeachers, setTeachers, addTeacher, and addTeachers to Student.
       },
       getAllData: function (cb) {
-        Student.findAll().then(function (data) {
+        Students.findAll().then(function (data) {
           let temp = [];
           data.forEach(function (item) {
             temp.push({
@@ -84,7 +87,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Student;
+  return Students;
 };
 
 
@@ -114,21 +117,21 @@ data.forEach(function(data) {
 /*
 2. Cara cari findAll
 findAll1: function () {
-  // console.log(Student.findAll()); // gak bisa gini
-  Student.findAll().then(function (data) {
+  // console.log(Students.findAll()); // gak bisa gini
+  Students.findAll().then(function (data) {
     console.log(data);
   })
 }
 
-db.Student.findAll1();
+db.Students.findAll1();
 */
 
 /*
 3. Cara kalo ga mau ada cb:
 getAllData: function () {
-  return Student.findAll()
+  return Students.findAll()
 }
-db.Student.getAllData().then(function (result) {
+db.Students.getAllData().then(function (result) {
   result.forEach(function (data) {
     console.log(`Id: ${data.dataValues.id}`);
     console.log(`First name: ${data.dataValues.first_name}`);
@@ -149,7 +152,7 @@ return age - now2;
 
 /*
 5. Cara untuk prototype attribute:
-Student.findAll().then(function(students) {
+Students.findAll().then(function(students) {
   students.forEach(function(data) {
   data.full_name = `${data.first_name} ${data.last_name}`
   })

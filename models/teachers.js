@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Teacher = sequelize.define('Teacher', {
+  var Teachers = sequelize.define('Teachers', {
     name: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
           msg: "Email format incorrect"
         },
         isUniqued: function (value, next) {
-          Teacher.findAll({
+          Teachers.findAll({
             where: {
               email: value
             }
@@ -43,9 +43,12 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Teachers.hasMany(Student_teachers);
+        Teachers.hasMany(models.Student_teachers); // menghasilkan teacherId ke dalam Student_teachers
+        Teachers.belongsToMany(models.Students, {through: "Student_teachers"})
+        // create Student_teachers with FK teacherId
+        // This will add methods getStudents, setStudents, addStudent, addStudents to Teachers
       }
     }
   });
-  return Teacher;
+  return Teachers;
 };
