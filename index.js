@@ -60,7 +60,7 @@ class StudentTeacher {
       })
     })
   }
-}student
+}
 
 // StudentTeacher.findStudents(1);//check associate
 // StudentTeacher.findTeacher(3);//check associate
