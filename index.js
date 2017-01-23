@@ -62,7 +62,7 @@ class StudentTeacher {
   }
 }
 
-// StudentTeacher.findStudents(1);//check associate
+StudentTeacher.findStudents(1);//check associate
 // StudentTeacher.findTeacher(3);//check associate
 // StudentTeacher.checkValidate();//checkValidate
 // StudentTeacher.checkRelation();//check student & siapa teacher nya
